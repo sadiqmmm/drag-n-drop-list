@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+ 
+
+<h1>Listing Tlists</h1>
+ 
+<ul id="tlist" data-update-url="<%= sort_tlists_url %>">
+  <% @tlists.each do |tlist| %>
+    <%= content_tag_for :li, tlist do %>
+      <%= link_to tlist.title, tlist %>
+    <% end %>
+  <% end %>  
+</ul>
+ 
+<%= link_to 'New Tlist', new_tlist_path %>
+
+

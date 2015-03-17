@@ -1,0 +1,21 @@
+<%= form_for(@tlist) do |f| %>
+  <% if @tlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tlist.errors.count, "error") %> prohibited this tlist from being saved:</h2>
+
+      <ul>
+      <% @tlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
