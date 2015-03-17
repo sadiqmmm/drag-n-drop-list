@@ -63,19 +63,11 @@ class TlistsController < ApplicationController
 
   def sort   
  
-    params[:tlist].each_with_index do |id, index|
-      @tlist = Tlist.find(id)
-      #@tlist.update({ position: index+1}, { id: id} )
-      @tlist.position = index + 1      
+    params[:tlist].each_with_index do |id, index|      
+      Tlist.update(id, { position: index+1})      
     end
-    
-    @tlist.save
-    #@book = Book.find(book_params[:book_id])
-    #@book.row_order_position = book_params[:row_order_position]
-    #@book.save
 
-    render nothing: true
-  
+    render nothing: true  
   end
 
   private
@@ -86,6 +78,6 @@ class TlistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tlist_params
-      params.require(:tlist).permit(:id, :title, :position)
+      params.require(:tlist).permit(:title, :position)
     end
 end
